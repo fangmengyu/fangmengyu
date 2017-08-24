@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no">
+<script src="view/ccb7x/js/common.js"></script>
+<link href="view/ccb7x/css/neat.css" rel="stylesheet">
+<link rel="stylesheet" href="view/ccb7x/css/common.css" >
+<script src="view/ccb7x/js/jquery.min.js"></script>
+<title></title>
+<style>
+	header>img{width:2.9rem;height:.9rem ;}
+	header .headTop{background: #7293c7;width:4.6rem;line-height: .9rem;color:#fff;text-align: center;}
+	header .headTop span.headTit{margin-left: .8rem;font-size: .32rem;}
+    header .headTop img{width:.6rem;height:.6rem;margin-right: .2rem;vertical-align: middle;margin-top:.15rem}
+	section img{width:100%;}	
+	section h1{text-align:left;color: #fff;line-height: .4rem;font-size: .32rem;}
+    section .goodsName{padding:.2rem 0;background: #7293c7;}
+    section .goodsName span{color: #fff;line-height: .4rem;font-size: .38rem;    margin-right: 0.4rem;
+    margin-top: 0.2rem;}
+    section .detail{padding: .2rem .2rem 1.2rem .2rem;}
+    section .detail h2{font-weight: bold;margin-bottom: .1rem;font-size: .3rem;}
+    section .detail p{line-height: .45rem;}
+    section .detail p span{vertical-align: top;display: inline-block;}
+    section .detail p span:nth-child(2){width:6rem}
+    section .detail p img{margin: .1rem 0;}
+    footer{text-align: center;position: fixed;padding: .1rem 0 .25rem 0;bottom: 0;height: auto;width: 100%;max-width:7.5rem;z-index: 100;background: rgba(255,255,255,0.8)}
+    footer button{    border-radius: 5px;color: #fff;text-align: center;display: inline-block;width:2.8rem;height: .8rem;background: #7293c7 ;line-height: .8rem;}
+    	/*抢购结束*/
+	 footer .noBgcolor{background: rgb(204, 204, 204);color: #4571b6;font-weight: bold;}
+    	
+</style>
+</head>
+<body>
+<header class="clearfix">
+	<img src="view/ccb7x/images/ccb.jpg" alt=""  class="fl"/>
+	<div class="headTop fr clearfix">
+		<span class="headTit fl">
+			花永生，爱永恒
+		</span>
+		<img src="view/ccb7x/images/my-zoe.png" alt=""class="fr" onclick="goMyOrders()" />
+	</div>
+</header>
+<section>
+		<img src="http://www.zoe360.com/{$goods.original_img}" alt="" />
+        <div class="goodsName clearfix">        
+		{if $goods.brand_name}
+            <div class="fl" style="margin-left:.4rem">
+                <h1>{$goods.brand_name}</h1>{/if}
+                <h1>{$goods.goods_name_wx}</h1>
+            </div>
+            
+            <span class="fr"> ￥{$goods.shop_price}</span>
+        </div>
+		<div class="detail">
+			{$goods.wx_desc}
+			
+			<p>
+				<img src="http://www.zoe360.com/{$goods.all_goods_img.0.img_url}" alt="" />
+			</p>
+			<!-- <p>*图片仅供参考，产品以实物为准。</p>
+			<p><span style="color: rgb(255, 0, 0);"><strong>【注意事项】</strong></span></p>
+			<p>抢购商品将于2016年5月20日由快递寄出至您登记地址，仅限上海地区配送。</p> -->
+		</div>
+</section>
+<footer>
+    {if $stock >0}
+        <button class="btn"  onclick="goNext()">立即抢购</button>
+    {else}
+        <button class="noBgcolor">已抢完</button>
+    {/if}
+	
+
+    
+</footer>
+<script>    
+    var stock = {$stock};
+    var goods_id = {$goods.goods_id};
+    function goNext(){
+    	if( stock <=0){
+    		return false;
+    	}
+    	window.location.href = 'index.php?class=bank&project=ccb7x&method=confirm&goods_id='+goods_id;
+    }
+  
+</script>
+</body>
+
+</html>

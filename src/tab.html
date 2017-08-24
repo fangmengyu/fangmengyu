@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+		<link rel="stylesheet" href="css/cartstyle.css?v1" type="text/css" />
+		<script src="js/jquery.min.js?v1" type="text/javascript"></script>
+        <script type="text/javascript">
+		$(document).ready(function(){
+          function tab(tit,list,className){
+              var titLi = $(tit).children();
+              var listDiv = $(list).children();
+
+              listDiv.eq(0).siblings().hide();
+              titLi.eq(0).addClass(className);
+              titLi.click(function(){
+                  $(this).addClass(className).siblings().removeClass(className);
+                  listDiv.eq($(this).index()).show().siblings().hide();
+
+                  if($(this).index() == 1){
+                    $(".h1_text").text("Baker & Spice门店");  
+                  }else{
+                    $(".h1_text").text("Wagas门店");
+                  }
+                  
+              });
+          }
+          tab(".tit",".list","cut");
+
+          function order(name){
+              // $(name).each(function(index,value){
+              //         $(name).first().children().eq(0).text("序列");
+              //         $(this).children().eq(0).text(index);
+              // });	
+              for(var i=0;i<$(name).size();i++){
+                if(i%2==0){
+                  $(name).eq(i).addClass('bg');
+                }
+                $(name).first().addClass('bgs')
+              }
+          }
+          order("#wagas tr");
+          order("#hui tr");
+
+		   });
+
+		</script>
+		<title>活动门店</title>
+	</head>
+	<body>
+    <div class="pagebg">
+		<h1 class="h1_text">wagas门店</h1>
+		<ul class="long_ul tit">
+			<li class="cut">wagas</li>
+			<li id="wpnp">Baker & Spice</li>
+		</ul>
+    <div class="list">
+       <div class="tg_jies1" id="wagas">
+         <table class="tg_jscenter" >
+            <tbody>
+                <tr>
+                    <td width="24%" id="order">门店名称</td>
+                    <td width="18%">区域</td>
+                    <td width="58%" class="nobor" style=" text-align:center;">门店地址</td>
+                </tr>
+                <tr>
+                
+                <td>西康189</td>
+                <td>普陀区</td>
+                <td class="nobor">长寿路189号上海189弄购物中心一层L109B-L110商铺</td>
+              </tr>
+                              
+              <tr>
+                <td>普陀巴黎春天</td>
+                <td>普陀区</td>
+                <td class="nobor">长寿路155号L102室</td>
+              </tr>
+              <tr>
+                <td>环球港</td>
+                <td>普陀区</td>
+                <td class="nobor">中山北路3300号上海环球港一层L1045-L1047</td>
+              </tr>
+              <tr>
+                <td>环智国际大厦店</td>
+                <td>闸北区</td>
+                <td class="nobor">恒丰路410-416号</td>
+              </tr>
+
+               
+              <tr>
+                <td>大悦城</td>
+                <td>闸北区</td>
+                <td class="nobor">西藏北路166号上海大悦城101-01B</td>
+              </tr>
+               
+              <tr>
+                <td>上海商城</td>
+                <td>静安区</td>
+                <td class="nobor">南京西路1376号118室东塔</td>
+              </tr>
+               
+              <tr>
+                <td>四季坊</td>
+                <td>静安区</td>
+                <td class="nobor">吴江路169号116室</td>
+              </tr>
+               
+              <tr>
+                <td>胶州路</td>
+                <td>静安区</td>
+                <td class="nobor">胶州路265号1楼</td>
+              </tr>
+               
+
+              <tr>
+                <td>中信泰富</td>
+                <td>静安区</td>
+                <td class="nobor">南京西路1168号地下一层11A室</td>
+              </tr>
+               
+              <tr>
+                <td>悦达889广场</td>
+                <td>静安区</td>
+                <td class="nobor">万航渡路889号一层5室</td>
+              </tr>
+
+              <tr>
+                <td>静安嘉里中心</td>
+                <td>静安区</td>
+                <td class="nobor">南京西路1515号N1-22</td>
+              </tr>
+
+               
+              <tr>
+                <td>中区广场</td>
+                <td>黄浦区</td>
+                <td class="nobor">黄陂北路227号中区广场1楼101室</td>
+              </tr>
+               
+              <tr>
+                <td>宏伊国际广场</td>
+                <td>黄浦区</td>
+                <td class="nobor">九江路288号一层116室</td>
+              </tr>
+
+              <tr>
+                <td>艺术购物中心</td>
+                <td>黄浦区</td>
+                <td class="nobor">淮海中路300号K11艺术购物中心B127-129</td>
+              </tr> 
+
+              <tr>
+                <td>无限度广场</td>
+                <td>黄埔区</td>
+                <td class="nobor">淮海中路138号一层108单元</td>
+              </tr> 
+
+               
+
+
+              <tr>
+                <td>安福路</td>
+                <td>徐汇区</td>
+                <td class="nobor">安福路195号1楼</td>
+              </tr>
+
+              <tr>
+                <td>东湖宾馆</td>
+                <td>徐汇区</td>
+                <td class="nobor">东湖路7号</td>
+              </tr>  
+
+              <tr>
+                <td>尚街</td>
+              <td>徐汇区</td>
+                <td class="nobor">建国西路283号104室 </td>
+              </tr> 
+
+              <tr>
+                <td>正大乐城</td>
+              <td>徐汇区</td>
+                <td class="nobor">中山南二路699号2-104-1</td>
+              </tr> 
+
+              <tr>
+                <td>江苏路</td>
+                <td>长宁区</td>
+                <td class="nobor">江苏路458号舜元大厦106单元</td>
+              </tr>  
+              <tr>
+                <td>中山公园龙之梦</td>
+                <td>长宁区</td>
+                <td class="nobor">长宁路1018号1层1051&1053室</td>
+              </tr> 
+
+              <tr>
+                <td>虹桥南丰城</td>
+                <td>长宁区</td>
+                <td class="nobor">遵义路100弄14幢28号2-L102&2-L204单元</td>
+              </tr> 
+ 
+              <tr>
+                <td>番禺路</td>
+              <td>长宁区</td>
+                <td class="nobor">番禺路483号</td>
+              </tr> 
+
+                <td>虹桥万都中心</td>
+                <td>长宁区</td>
+                <td class="nobor">仙霞路86号108室 </td>
+              </tr> 
+
+              <tr>
+                <td>古北家乐福</td>
+                <td>长宁区</td>
+                <td class="nobor">水城南路268号</td>
+              </tr> 
+              <tr>
+                <td>百盛优客</td>
+                <td>长宁区</td>
+                <td class="nobor">天山路889号百盛优客城市广场地下一层B1E04</td>
+              </tr> 
+ 
+              <tr>
+                <td>缤谷广场</td>
+                <td>长宁区</td>
+                <td class="nobor">天山路341号105室</td>
+              </tr> 
+              <tr>
+                <td>星空广场</td>
+              <td>长宁区</td>
+                <td class="nobor">虹桥路1665号星空广场1层B-104</td>
+              </tr> 
+
+              <tr>
+                <td>陆家嘴环路</td>
+              <td>浦东新区</td>
+                <td class="nobor">陆家嘴环路1188号L1商铺</td>
+              </tr> 
+
+              <tr>
+                <td>96 广场</td>
+              <td>浦东新区</td>
+                <td class="nobor">东方路796号171单元</td>
+              </tr>  
+ 
+ 
+              <tr>
+                <td>花木路</td>
+                <td>浦东新区</td>
+                <td class="nobor">锦康路252号101室</td>
+              </tr>  
+              <tr>
+                <td>浦东大拇指广场</td>
+                <td>浦东新区</td>
+                <td class="nobor">芳甸路199弄证大大拇指广场31号</td>
+              </tr>  
+              <tr>
+                <td>金桥国际商业广场</td>
+              <td>浦东新区</td>
+                <td class="nobor">张扬路3611号3座一层120室</td>
+              </tr> 
+
+              <tr>
+                <td> 嘉里城</td>
+              <td>浦东新区</td>
+                <td class="nobor">花木路1378号浦东嘉里城商城一层L137号单元</td>
+              </tr>  
+                       
+              <tr>
+                <td>长泰广场</td>
+              <td>浦东新区</td>
+                <td class="nobor">祖冲之路1239弄6号3号楼</td>
+              </tr>     
+
+                <td>国金中心</td>
+                <td>浦东新区</td>
+                <td class="nobor">世纪大道8号上海IFC商城LG1层16单元</td>
+              </tr> 
+              <tr>
+                <td>宝地广场</td>
+                <td>杨浦区</td>
+                <td class="nobor">昆明路555号宝地广场D栋一层109单元</td>
+              </tr> 
+
+              <tr>
+                <td>大学路</td>
+                <td>杨浦区</td>
+                <td class="nobor">大学路67号</td>
+              </tr> 
+
+            
+              <tr>
+                <td>丰尚国际生活中心</td>
+                <td>闵行区</td>
+                <td class="nobor">运乐路571号175室</td>
+              </tr> 
+             </tbody>
+          </table>
+       </div>
+       
+       <div class="tg_jies1" id="hui">
+         <table class="tg_jscenter" >
+            <tbody>
+               <tr>
+                    <td width="24%" id="order">门店名称</td>
+                    <td width="18%">区域</td>
+                    <td width="58%" class="nobor" style=" text-align:center;">门店地址</td>
+                </tr>
+                  <tr>
+                    <td>安福路</td>
+                    <td>徐汇区</td>
+                    <td class="nobor">安福路195号1楼</td>
+                  </tr>
+                   
+                  <tr>
+                    <td>南京西路</td>
+                    <td>静安区</td>
+                    <td class="nobor">南京西路1376号118室东塔</td>
+                  </tr>
+                   
+                  <tr>
+                    <td>浦东IFC商城</td>
+                    <td>浦东新区</td>
+                    <td class="nobor">世纪大道8号上海IFC商城LG1层16单元</td>
+                  </tr>
+                   
+                  <tr>
+                    <td>浦东嘉里城</td>
+                    <td>浦东新区</td>
+                    <td class="nobor">花木路1378号浦东嘉里城商城一层L137号单元</td>
+                  </tr>
+                   
+                  <tr>
+                    <td>K11</td>
+                    <td>黄浦区</td>
+                    <td class="nobor">淮海中路300号K11艺术购物中心B127-129</td>
+                  </tr>
+                   
+                  <tr>
+                    <td>运乐路</td>
+                    <td>闵行区</td>
+                    <td class="nobor">运乐路571号175室</td>
+                  </tr>
+                   
+                  <tr>
+                    <td>遵义路</td>
+                    <td>长宁区</td>
+                    <td class="nobor">遵义路100弄14幢28号2-L102 & 2-L204单元</td>
+                  </tr>
+  
+
+             </tbody>
+          </table>
+       </div>
+
+    </div>
+
+       
+
+     </div>
+	</body>
+</html>

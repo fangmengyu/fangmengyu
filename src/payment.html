@@ -1,0 +1,177 @@
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+<meta http-equiv="Cache-Control" content="no-Cache">
+<meta http-equiv="Cache-Control" content="max-age=0">
+<link rel="apple-touch-icon-precomposed" href="http://www.zoe360.com/animated_favicon.gif">
+<title></title>
+<style>
+.pay_tips{ line-height:1.8em; padding:10px;font-size:0.9em; text-align:left}
+#unionpay p{ padding:10px 0;}
+#unionpay input{border:1px #ddd solid; border-radius:5px; height:2.5em; padding:0 5px;  background:#fff;font-size:1em; font-weight:bold;text-align:center}
+#unionpay .card{ width:70%; margin-right:5%}
+#unionpay .code{ width:50%}
+#unionpay .opencard{ color:#09C}
+#unionpay .smscode{ width:30%; margin-left:5%;background:#17B7E7; border:1px #09C solid;-webkit-appearance: none; color:#fff;}
+#unionpay .btn{background:#D90008; border:1px solid #D90008; width:85%; margin:15px 0;border-radius:5px; -webkit-appearance: none;height:2.5em;font-size:1.2em;}
+#unionpay .timer{box-shadow: 0 0 0 2px #17B7E7 inset;top:50%}
+#unionpay .timer::after, #unionpay .timer::before{
+    background-color:#17B7E7; 
+}
+.payment ul{
+    margin:10px;
+    line-height:2em;
+}
+.payment .title{
+    font-size:1em;
+    font-weight:bold
+}
+.payment b{
+    color:#D90008
+}
+.load{background:#D90008; border:1px solid #D90008; width:85%; margin:15px 0;border-radius:5px; -webkit-appearance: none;height:2.5em;font-size:1.2em;line-height: 2.5em;text-align: center;}
+.load .cone_text{margin-left: 2.2rem;float:left;}
+.load .wobble{margin-left: .2rem;float:left;    margin-top: 1.2em;}
+.cone {
+display:inline-block;
+position: relative;
+width:.3rem;
+height:.3rem;
+border-radius:50%;
+text-align: center;
+animation:loading 1.2s linear infinite alternate;
+}
+.clear{ clear:both} 
+ @-webkit-keyframes loading{
+               0% {
+                background:rgba(254,254,254,1);
+                box-shadow:10px 0 0 0 rgba(254,254,254,.4),20px 0 0 0 rgba(1254,254,254,.4),30px 0 0 0 rgba(1254,254,254,.4),40px 0 0 0 rgba(254,254,254,.4);
+            }
+            25% {
+                background:rgba(254,254,254,.4);
+                box-shadow:10px 0 0 0 rgba(1254,254,254,1),20px 0 0 0 rgba(1254,254,254,.4),30px 0 0 0 rgba(1254,254,254,.4),40px 0 0 0 rgba(254,254,254,.4);
+            }
+            50% {
+                background:rgba(254,254,254,.4);
+                box-shadow:10px 0 0 0 rgba(1254,254,254,.4),20px 0 0 0 rgba(1254,254,254,1),30px 0 0 0 rgba(1254,254,254,.4),40px 0 0 0 rgba(1254,254,254,.4);
+            }
+            75% {
+                background:rgba(254,254,254,.4);
+                box-shadow:10px 0 0 0 rgba(1254,254,254,.4),20px 0 0 0 rgba(1254,254,254.4),30px 0 0 0 rgba(1254,254,254,1),40px 0 0 0 rgba(1254,254,254,.4);
+            }
+            100% {
+                background:rgba254,254,254,.4);
+                box-shadow:10px 0 0 0 rgba(1254,254,254,.4),20px 0 0 0 rgba(1254,254,254,.4),30px 0 0 0 rgba(1254,254,254,.4),40px 0 0 0 rgba(254,254,254,1);
+            }
+            }
+</style>
+<script type="text/javascript" src="public/js/jquery.min.js"></script>
+</head>
+<body>
+
+    <article><div id="section"><div class="ha w">
+        <header>
+            <a href="javascript:history.go(-1);" onclick="return BackToGoods(this)" class="nav fl"></a><a class="cart fr" href="../huigo/order.htm"></a>
+        </header>
+        <section>
+            <div class="payment">
+                <ul>
+                    <li class="title">{$goods_name}</li>
+                    <li>数&nbsp;&nbsp;&nbsp;&nbsp;量：<b>{$number}</b></li>
+                    <li>总&nbsp;&nbsp;&nbsp;&nbsp;价：<b>￥{$order_amount}</b></li>
+                </ul>
+                <div style="background:#fffdf2;border:1px solid #ffe2c6;margin:10px;padding:10px;font-size:0.9em;line-height: 1.8em;">
+                    <div align="center" id="unionpay">
+                        <p><input type="tel" class="card" readonly="" value="{$card_number}" name="card" id="card" onkeyup="NumOnkey(this);" placeholder="">
+                            <a class="opencard" onclick="payment('opencard')">开通</a>
+                        </p>
+                        <div id="mobilephone" align="center"></div>
+                        <p><input type="tel" class="code" id="code" name="code" maxlength="6" onkeyup="NumOnkey(this);" placeholder="短信验证码"><input class="smscode" type="button" value="获取验证码" onclick="payment('smscard',this);"></p>
+                        <button class="btn" onclick="payment('payment');">确定</button>
+                        <div class="clearfix load" >
+                            <div class="cone_text">加载中</div>
+                            <div class="wobble" id="focus">
+                                <span class="cone"></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+    </article>
+    <script type="text/javascript">
+        var order_id = '{$order_id}';
+        var project = '{$project}';
+        $(".load").hide();
+
+        function payment(act,obj){
+            var card = $('#card').val();
+            var code = $('#code').val();
+            var param = {};
+            param.order_id = order_id;
+            param.card = card;
+            param.code = code;
+            $(".load").show();
+            $(".btn").hide();
+            if( act == 'smscard' && obj){
+                startTimer(obj, 60)
+            }
+           
+            $.post('index.php?class=bank&method=doPayment&project='+ project +'&do=' + act, param,function(success){
+                clearTimeout(t);
+                $(obj).prop('disabled', false);
+                $(obj).val('获取验证码');
+                 $(".load").hide();
+                 $(".btn").show(); 
+                if( success.html){
+                    document.write(success.html);
+                    document.close();
+                    return false;
+                }else if(success.err == 1){
+                    alert(success.msg);
+                    if(success.link ){
+                        window.location.href = success.link;
+                    }
+                    return false;
+                }else if(success.err == 6){
+                    if(confirm('确认要开通银联在线吗?')){
+                         payment('opencard')
+                    }
+                }else if(success.link){
+                    window.location.href = success.link;
+                }else{
+                     alert(success.msg);
+                    return false;
+                }
+            },'JSON');
+        }
+
+        var startTimerText = '';
+        var t;
+        function startTimer(obj, second){
+            if(startTimerText == ''){
+                startTimerText = $(obj).val();
+            }
+            console.log(second);
+            if(second == 0){
+                $(obj).prop('disabled', false);
+                $(obj).val(startTimerText);
+                return false;
+                
+            }else{
+                second -- ;
+                $(obj).prop('disabled', true);
+                $(obj).val(second + 's');
+            }
+            t = setTimeout(function() { 
+                startTimer(obj,second); 
+            },1000) 
+        }
+
+        function NumOnkey(t){
+
+        }
+    </script>
+</body>
+</html>

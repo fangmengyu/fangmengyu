@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no">
+<script src="view/ccb7x/js/common.js"></script>
+<link href="view/ccb7x/css/neat.css" rel="stylesheet">
+<link rel="stylesheet" href="view/ccb7x/css/common.css" >
+<script src="view/ccb7x/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js?v=20170821"></script>
+<title></title>
+<style>
+html,body{height: 100%;} 
+.contain .bg{width:7.5rem;top:0;left: 0;}
+.contain .logo{width:1.8rem;height: .46rem;top: .25rem;left: .3rem;}
+.contain .rule{display:inline-block;font-size: .24rem;color:#005bac;text-decoration:underline;right: .3rem;top: .3rem;font-weight: bold;}
+.contain ul{top:7.38rem ;left:.23rem;}
+.contain ul li{background: url(view/ccb7x/images/border.png) no-repeat;width:2.22rem;height: 3.6rem;background-size: 100% 100%;text-align: center;float: left;margin-right: .2rem;}
+.contain ul li:last-child{margin-right:0;}
+.contain ul li img{width:1.93rem;height: 1.65rem;margin-top: .15rem;}
+.contain ul li a{display: block;}
+.contain ul li h1{font-size: .18rem;color:#666666;font-family:"Adobe 黑体 Std" ;line-height: .3rem;margin-top: .08rem;margin-left: .05rem;}
+.contain ul li span{display: block;}
+.contain ul li span.discountPrice{font-size: .24rem;color:#333333;font-weight: bold;margin-top: .08rem;}
+.contain ul li span.discountPrice i{color:#ed5c58;}
+.contain ul li span.usualPrice{font-size: .18rem;color:#b6b6b6;}
+.contain ul li button{font-size: .24rem;font-weight: bold;color:#fff;width:1.6rem;height: .48rem;border-radius: .18rem;top:3.3rem;left:.3rem;background: #5dc4f8;}
+.contain .time{font-size: .26rem;top:10.64rem;left:1.14rem;width:5.2rem;height: .56rem;line-height:.56rem;border-radius:.25rem ;color:#fff;color:#fdfe90;text-align: center;font-weight: bold;color:#fff;}
+.layer{width:7.5rem;height: 100%;background: rgba(0,0,0,.5);position: fixed;top:0;left:0;display: none;font-size: .24rem}
+.layer .layerMain{background: #fff;margin: .2rem .3rem 0 .3rem;width:6.9rem;height:10.5rem;border-radius: .1rem;padding: .3rem;overflow: auto;}
+.layer .layerMain h1{font-weight: bold;padding-top: .2rem;font-size: .3rem;text-align: center}
+.layer .layerMain dl{font-size: .24rem;line-height: .4rem;margin-bottom: .05rem;text-align: justify;margin-top: .1rem;}
+.layer .layerMain .layerRule{margin-top: .2rem;}
+.layer img{top:.1rem;right:.1rem;width:.55rem;height: .55rem;}
+/*抢购结束状态*/
+.contain ul li .buttonbg{background: #dddddd;}
+.show{display: none}
+</style>
+</head>
+<body>
+	<div class="contain por">
+		<img src="view/ccb7x/images/bg.jpg" alt="" class="bg poa"/>
+		<img src="view/ccb7x/images/logo.png" class="logo poa" alt="" />
+		<span class="rule poa">活动规则</span>
+		<ul class="poa clearfix">
+			{foreach from=$goodsList item=goods}
+			    <li class="por">
+			    <a href="index.php?class=bank&method=goods&project=ccb7x&goods_id={$goods.goods_id}">
+					<img src="http://www.zoe360.com/{$goods.goods_thumb}" alt="" />			    	
+			    </a>
+			    	
+					<h1>
+						{$goods.brand_name}<br />{$goods.goods_brief}
+					</h1>
+					<span class="discountPrice">抢购价 : <i>{$goods.shop_price}元</i></span>
+					<span class="usualPrice">市场价 : <i>{$goods.market_price}元</i></span>
+					{if $goods.stock > 0}
+						<button class="poa show" onclick="window.location.href='index.php?class=bank&method=goods&project=ccb7x&goods_id={$goods.goods_id}'">立即抢购</button>
+					{else}
+						<button class="poa show buttonbg" onclick="window.location.href='index.php?class=bank&method=goods&project=ccb7x&goods_id={$goods.goods_id}'">已抢完</button>
+					{/if}
+					
+				</li>
+			{/foreach}
+
+			
+		</ul>
+		<div class="time poa">
+			<span></span>
+		</div>
+	</div>
+	<div class="layer">
+		<div class="layerMain">
+            <h1>“花永生，爱永恒”62龙卡信用卡七夕最低99元抢购野兽派、歌帝梵</h1>
+
+			<div class="layerRule">
+                <dl>
+                    <dt>1、活动主题：</dt>
+                    <dd>“花永生，爱永恒”62龙卡信用卡七夕最低99元抢购野兽派、歌帝梵</dd>
+                </dl>
+                <dl>
+                    <dt>2、活动时间：</dt>
+                    <dd>2017年8月24日10:00起（抢完即止）</dd>
+                </dl>
+                <dl>
+                    <dt>3、 活动区域范围：</dt>
+                    <dd>上海地区</dd>
+                </dl>               
+                <dl>
+                    <dt>4、活动对象：</dt>
+                    <dd>建行62开头龙卡银联信用卡持卡人</dd>
+                </dl>
+
+                <dl>
+                    <dt>5、活动内容：</dt>
+                    <dd>活动当天，62开头龙卡银联信用卡持卡人登录手机wap端活动页面在线抢购活动专区产品：1、199元（含快递费）抢购野兽派“白雪公主的苹果”巨型永生玫瑰（价值390元）一份或野兽派米奇心形永生花盒-小号（价值680元）一份；2、99元（含快递费）抢购GODIVA金装心形巧克力礼盒6颗装（价值180元）一份。本次活动每单仅限购1个产品，每客户最多限购2单。本次活动共318份，额满即止。</dd>
+                </dl>                
+                <dl>
+                    <dt>6、活动路径：</dt>
+                    <dd>（1）关注“上海建行”微信公众号8月21日发布的微信内容。</dd>
+                    <dd>（2）关注“上海建行财管家”微信公众号8月23日发布的微信内容。</dd>
+                </dl>                
+                <dl>
+                    <dt>7、活动规则：</dt>
+                    <dd>（1）本次活动仅适用于建行62开头龙卡银联信用卡持卡人，须登录手机wap端指定活动专区并通过银联在线支付方可享受优惠，第三方等其他交易方式均不参加本次活动。</dd>
+                    <dd>（2）活动时间为2017年8月24日10:00起，消费日期以银联在线系统记录的持卡人刷卡交易时间为准（北京时间）。</dd>
+                    <dd>（3）活动期间共318份，本次活动每客户每单仅限购1个产品，最多限购2单，额满即止。同一手机号、同一身份证号、同一卡号，满足任一条件均视为同一客户。</dd>
+                    <dd>（4）本次活动商品配送范围仅限上海地区，配送日期限8月28日当日到达。持卡人须完整、准确填写物流信息，包括收件人姓名、联系方式、收货地址。快递信息一经提交不得修改，如因持卡人自身原因导致商品无法正常配送的，由持卡人本人承担，中国建设银行不承担任何责任。</dd>
+                    <dd>（5）若抢购活动标签呈现已抢完，表示当天该场活动已经结束，享受优惠以实际支付成功为准。若由于各种原因，如卡片额度不足、卡片状态异常等导致付款失败，则优惠名额会自动释放，由释放后参加的客户继续享受。若网络异常，表示同一时间参与者数量过多，请稍后再试。</dd>
+                    <dd>（6）使用任何作弊手段及工具产生的抢购行为，中国建设银行有权取消其参与资格并保留进一步追究其责任的权利。</dd>
+                    <dd>（7）持卡人参与本次活动即视为理解并同意本活动细则。</dd>
+                    <dd>（8）本活动中商品及相关服务由合作商户提供，持卡人因商品或服务质量引发的任何索赔、质询及投诉由合作商户负责处理和解决。</dd>
+                    <dd>（9）如持卡人对于本活动有任何问题请于2017年8月30日之前提出，如未在上述期限内提出，后续不再进行处理。</dd>
+                    <dd>（10）持卡人若于活动期间有逾期还款、卡片已冻结，或有其他违反中国建设银行龙卡信用卡章程、领用协议或相关业务约定条款情形，则中国建设银行有权随时取消其参加活动的资格。</dd>
+                    <dd>（11）在法律许可范围内，中国建设银行有权修订本活动条款及细则（包括但不限于参加资格、活动时间及奖励方式等）、暂停或取消本活动、并经相关途径（如我行网站、对账单、短信、报刊或各分支网点等）公告后生效。</dd>
+                </dl>                
+
+			</div>
+		</div>
+		<img src="view/ccb7x/images/close.png" class='poa' alt="" />
+	</div>
+
+
+
+
+
+<script>        
+var title = '龙卡信用卡陪你过七夕';
+var desc = '最低99元抢购野兽派，歌帝梵！';
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1b3f9c3c4b7833c1d3430dd3b2ce3b20";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+$(function(){
+    $.post('index.php?class=bank&method=wxJsConfig&project=ccb7x', {url : window.location.href},function(response){
+        response.wxConfig.debug = false;
+        wx.config(response.wxConfig);
+        loadJs();
+        
+
+    },'JSON')
+})
+
+function loadJs(){
+     wx.ready(function () {
+         wx.onMenuShareTimeline({
+            title: title + "   " + desc, // 分享标题
+            link: 'http://aty.zoe360.com/weixin/bank/index.php?class=bank&method=index&project=ccb7x&time=' + Date.parse(new Date()), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'http://www.zoe360.com/images/201708/thumb_img/2186_thumb_G_1502931968436.png', // 分享图标
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: 'http://aty.zoe360.com/weixin/bank/index.php?class=bank&method=index&project=ccb7x&time=' + Date.parse(new Date()), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'http://www.zoe360.com/images/201708/thumb_img/2186_thumb_G_1502931968436.png', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+            }
+        });
+     })
+}
+var time = {$time};
+if( time <= 0){
+	autoShowHrefButton();
+}else{
+	 $('.time span').html(getMinutes(time));
+	 $('.time').css('background','#5dc4f8');
+	var  t = setInterval(function () {
+   	time --;
+    var nowtime = new Date();
+ 
+    
+    $('.time span').html(getMinutes(time));
+    $('.time').show();
+    if( time <= 1){
+    	autoShowHrefButton();
+    	clearInterval(t);
+    }
+  }, 1000);
+}
+$(".rule").on('click',function(){
+
+	$(".layer").slideDown()
+});
+$(".layer img").on('click',function(){
+	$(".layer").slideUp()
+});
+$(".layer .layerMain").on('click',function(e){
+	e.stopPropagation();	
+});
+$(".layer").on('click',function(){
+	$(this).slideUp()
+});  
+
+function getMinutes(time){
+	var day = parseInt(time  / 60 / 60 / 24);
+    var hour = parseInt(time  / 60 / 60 % 24);
+    var minute = parseInt(time  / 60 % 60);
+    var seconds = parseInt(time  % 60);
+    var str = '抢购倒计时：';
+    if( day > 0){
+        str += day + '天'
+    }
+    if( hour   > 0){
+    	str += hour + "小时";
+    }
+    if( minute > 0){
+    	str +=  minute + "分钟";
+    }
+    if( seconds >= 0){
+    	str += seconds + "秒";
+    }
+    return str;
+}
+
+
+    function autoShowHrefButton(){
+  	    $('.time').css('display', 'none');
+    	$('.show').show();
+    }
+  </script>
+</body>
+
+</html>

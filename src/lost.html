@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no">
+<script src="js/common.js"></script>
+<link href="css/neat.css" rel="stylesheet">
+<link rel="stylesheet" href="css/common.css" >
+<script src="js/jquery.min.js"></script>
+<title></title>
+<style>
+</style>
+</head>
+<body>
+<!-- <img src="images/lost.png" alt="">
+<p>哎呀，抢购太火爆了！请重新刷新试试</p> -->
+<script>
+function losterpage(){
+    var lost = '<img src="images/lost.png" style="width:1rem;height: 1rem;margin:1.5rem 3.2rem .5rem;"><p style="text-align: center;font-size:.24rem;color:#333;">哎呀，抢购太火爆了！请重新刷新试试</p>';
+    $('body').html(lost);
+}        
+losterpage();
+function loadingPage(){
+    var loading  = '<button class="btn go" style="border-radius: 5px;color: #fff;text-align: center;display: inline-block;width:6rem;height: .8rem;background: #7293c7 ;line-height: .8rem;" onclick="addorder()">立即抢购</button><div class="clearfix load" style="border-radius: 5px;color: #fff;text-align: center;width:6rem;height: .8rem;background: #7293c7 ;line-height: .8rem;    margin-left: .75rem;"><div class="cone_text fl" style="margin-left: 2.2rem">加载中</div><div class="wobble fl" id="focus" style="margin-left: .2rem;"><span class="cone" style="    display:inline-block;position: relative;width:.1rem;height:.1rem;border-radius:50%;text-align: center;animation:loading 1.2s linear infinite alternate;"></span></div></div>'
+    $(".btn").html(loading)
+}
+loadingPage()
+</script>
+</body>
+
+</html>

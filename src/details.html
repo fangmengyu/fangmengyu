@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no">
+<script src="js/common.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/js.js"></script>
+<!--<script src="js/js.js"></script>-->
+<link href="css/neat.css" rel="stylesheet">
+<link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<title>分期好礼</title>
+<style>
+	body{width:7.5rem;height: 100%;margin: 0 auto;font-family: "苹方";}
+	.contain>img:nth-child(1){width:7.5rem;height: .86rem;}
+	.contain>p:nth-child(2){width:100%;height: .18rem;background: #ff9e19;margin-bottom: .28rem;}	
+	
+	.user{width:.42rem;height: .42rem;position: absolute;top:.22rem;left:6.79rem}
+	#orders{overflow: auto;height: 10.3rem}
+	.order{font-size: .24rem;margin-bottom: .3rem;border-bottom: .02rem solid #f2f2f2;padding-bottom: .3rem;}
+	h1{font-size: .28rem;color:#333333;font-weight: bold;margin-bottom: .08rem;}
+	span{line-height: .4rem;}
+	.prompt{color: #999999;}
+	.coupon{width:1.82rem;height: 1.13rem;margin-left:.3rem;margin-right: .2rem;}
+	.pro{margin-left: .3rem;}
+	.num,.price{color: #c7000a;}
+	.sao{text-align: center;margin: .2rem .2rem 0 0;}
+
+	.tip2{width:.56rem;height:.56rem;}		
+	.look{font-size: .18rem;color: #999999;line-height: .36rem;}
+	button{width:1.3rem;height: .48rem;border-radius: .05rem;border:.03rem solid #ff9e19;background:#fff;margin-right:.2rem;font-size: .2rem;color:#ff9e19;font-weight: bold;margin-top:.4rem}
+	.footer{font-size: .2rem;color:#999999;text-align: center;position: fixed;bottom:0;background: #fff;width:100%;padding:.2rem}
+	.footer p{line-height: .4rem;}
+	.popup{width:7.5rem;height:100%;position: fixed;top:0;left:0;background: rgba(117,117,117,.8);display: none;}
+	.popup>img:nth-child(1){width:3.6rem;height: 3.6rem;margin-left: 1.95rem;margin-top: 3rem;border:.1rem solid #fff}
+	.popup>img:nth-child(2){width:.6rem;height: .6rem;margin-left: 3.3rem;margin-top: 3rem;}
+	@media screen and (min-width: 360px) and (max-width: 374px){
+	.coupon{margin-left: .2rem;margin-right: .25rem;}
+
+	button{width:1.5rem;height: .48rem;margin-top:.4rem}
+	}
+	@media screen and (min-width: 320px) and (max-width: 359px){
+	.coupon{margin-left: .2rem;margin-right: .25rem;}
+	button{width:1.5rem;height: .48rem;margin-top:.4rem}
+		
+	}
+</style>
+</head>
+<body>
+	<div class="contain por">
+		<img src="images/top.png" alt="" />
+		<p></p>
+		<img src="images/people.png" alt="" / class="user">	
+		<div id="orders">
+			<!--<div class="order clearfix">
+			<img src="images/quan2.png" alt="" / class="coupon fl">
+			<div class="fl">
+				<h1>Wagas餐厅50元现金券</h1>
+				<p>
+					<span class="prompt">下单时间：</span>
+					<span>2017-07-24 16:05</span>
+				</p>
+				<p>
+					<span class="prompt">数量：<em class="num">1</em></span>
+
+					<span class="prompt pro">支付金额：<em class="price">￥1.00</em></span>
+
+				</p>
+			</div>
+			<div class="fr sao ">
+				<img src="images/tip2.png" alt="" / class="tip2">
+				<p class="look">点击查看</p>
+
+			</div>
+		</div>
+		<div class="order clearfix">
+			<img src="images/quan2.png" alt="" / class="coupon fl">
+			<div class="fl">
+				<h1>Wagas餐厅50元现金券</h1>
+				<p>
+					<span class="prompt">下单时间：</span>
+					<span>2017-07-24 16:05</span>
+				</p>
+				<p>
+					<span class="prompt">数量：<em class="num">1</em></span>
+
+					<span class="prompt pro">支付金额：<em class="price">￥1.00</em></span>
+
+				</p>
+			</div>
+			<div class="fr">
+
+				<button>点击付款</button>
+			</div>
+		</div>-->
+		</div>
+		
+		<div class="popup">
+			<img src="images/tip.png" alt="" id="big"/>
+			<img src="images/close.png" alt="" / class="close">
+		</div>
+		<div class="footer">
+			<p>该活动由上海佐依市场营销策划有限公司「写意生活」提供技术&服务支持</p>
+			<p>客服热线：4006-588-360（周-至周日9：00-18：00）</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(".look").click(function(){
+		$('.popup').show()
+	})
+	$(".close").click(function(){
+		$('.popup').hide()
+	})
+	window.onload = function(){
+		getOrders();
+	}
+	function getOrders(){
+		var func = function(res){
+			if( res.url){
+				window.location.href = res.url
+			}
+			if(res.rows){
+				var str ='';
+				for (var i = 0; i < res.rows.length; i++) {
+					str += getOrderHmtl(res.rows[i]);
+				}
+				$('#orders').html(str);
+			}
+		}
+		CallAjax('controller/ajax.php?act=getWagasOrder',null,func)
+	}
+
+	function getOrderHmtl(row){
+		var html = '<div class="order clearfix">';
+		    html += '<img src="images/quan2.png" alt="" / class="coupon fl">';
+			html += '<div class="fl">';
+			html += '<h1>Wagas餐厅50元现金券</h1>';
+			html += '<p>';	
+			html += '<span class="prompt">下单时间：</span>';	
+			html += '<span>' + row.add_time +  '</span>';	
+			html += '</p>';
+			html += '<p>'		
+			html += '<span class="prompt">数量：<em class="num">1</em></span>';
+			html += '<span class="prompt pro">支付金额：<em class="price">';
+			html += '￥1.00</em></span>';	
+			html += '</p>';	
+			html += '</div>';	
+			var action = '';		
+			var isAddSao = 'sao';
+			if(row.order_status > 1){
+				action += '已取消';
+			}else{
+				if(row.pay_status == 2){
+					action = '<img src="' + row.card_url + '" alt="" / class="tip2">';	
+					action += '<p class="look" onclick="showBigQrcode(\'' + row.card_url + '\')">点击查看</p>';	
+				}else{
+					action = '<button onclick="window.location.href=\'payment.html?id='+  row.order_id+'\'">点击付款</button>';
+					isAddSao = ''
+				}
+			}
+			
+			html += '<div class="fr  '+ isAddSao +'">';
+			html += action;
+				
+			html += '</div>';
+			html += '</div>';	
+		return html;
+			
+	}
+
+	function showBigQrcode(url){
+		$('.popup>#big').attr('src', url);
+		$('.popup').show()
+	}
+</script>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no">
+<script src="view/ccb7x/js/common.js"></script>
+<link href="view/ccb7x/css/neat.css" rel="stylesheet">
+<link rel="stylesheet" href="view/ccb7x/css/common.css" >
+
+<script src="view/ccb7x/js/jquery.min.js"></script>
+<title></title>
+<style>
+	input[type='text']:disabled {
+    background: none;
+}
+    header>img{width:2.9rem;height:.9rem ;}
+    header .headTop{background: #7293c7;width:4.6rem;line-height: .9rem;color:#fff;text-align: center;}
+    header .headTop span.headTit{margin-left: .8rem;font-size: .32rem;}
+    header .headTop img{width:.6rem;height:.6rem;margin-right: .2rem;vertical-align: middle;margin-top:.15rem}
+	section h1{line-height: .8rem;font-size: .3rem;font-weight: bold;margin-top: .2rem;}
+	section{padding: 0 .3rem 1.5rem .3rem;}
+	section dd{width:1.5rem;text-align:justify;}
+	section dl{line-height: .8rem;}
+	section dl .price{color: #F00;font-weight: bold;}
+	section dl .name input{border-bottom: .02rem solid #dedbdb;width:5rem ;   text-align: center;}
+	section dl .areaT{margin-left: .2rem;}
+	section dl .areaT img{width:.3rem;height: .3rem;top:.25rem;right:.2rem}
+	section dl .areaT .rotate{transform: rotate(180deg);} 
+	section dl .area{border: .02rem solid #dedbdb;width: 2rem;;height: .7rem;line-height:.7rem;border-radius: .1rem;display: inline-block;text-indent: .2rem;}
+	section dl .areaT ul{width:2rem;background: #FFF;display: none;border: .02rem solid #eae6e6;overflow: auto;z-index: 111;height: 3rem;}
+	section dl .areaT ul li{line-height: .5rem;font-size: .24rem;    text-align: center;border-bottom: .02rem dashed #eae6e6;}
+	section p{font-size: .24rem;color:#999999;}
+	footer{text-align: center;position: fixed;padding: .1rem 0 .25rem 0;bottom: 0;height: auto;width: 100%;max-width:7.5rem;z-index: 100;background: rgba(255,255,255,0.8)}
+    footer button{    border-radius: 5px;color: #fff;text-align: center;display: inline-block;width:6rem;height: .8rem;background: #7293c7 ;line-height: .8rem;}
+    footer .load{border-radius: 5px;color: #fff;text-align: center;width:6rem;height: .8rem;background: #7293c7 ;line-height: .8rem;    margin-left: .75rem;}
+    footer .load .cone_text{margin-left: 2.2rem}
+    footer .load .wobble{margin-left: .2rem;}
+    footer .cone {
+    display:inline-block;
+    position: relative;
+    width:.1rem;
+    height:.1rem;
+    border-radius:50%;
+    text-align: center;
+    animation:loading 1.2s linear infinite alternate;
+}
+ @-webkit-keyframes loading{
+               0% {
+                background:rgba(254,254,254,1);
+                box-shadow:10px 0 0 0 rgba(254,254,254,.4),20px 0 0 0 rgba(1254,254,254,.4),30px 0 0 0 rgba(1254,254,254,.4),40px 0 0 0 rgba(254,254,254,.4);
+            }
+            25% {
+                background:rgba(254,254,254,.4);
+                box-shadow:10px 0 0 0 rgba(1254,254,254,1),20px 0 0 0 rgba(1254,254,254,.4),30px 0 0 0 rgba(1254,254,254,.4),40px 0 0 0 rgba(254,254,254,.4);
+            }
+            50% {
+                background:rgba(254,254,254,.4);
+                box-shadow:10px 0 0 0 rgba(1254,254,254,.4),20px 0 0 0 rgba(1254,254,254,1),30px 0 0 0 rgba(1254,254,254,.4),40px 0 0 0 rgba(1254,254,254,.4);
+            }
+            75% {
+                background:rgba(254,254,254,.4);
+                box-shadow:10px 0 0 0 rgba(1254,254,254,.4),20px 0 0 0 rgba(1254,254,254.4),30px 0 0 0 rgba(1254,254,254,1),40px 0 0 0 rgba(1254,254,254,.4);
+            }
+            100% {
+                background:rgba254,254,254,.4);
+                box-shadow:10px 0 0 0 rgba(1254,254,254,.4),20px 0 0 0 rgba(1254,254,254,.4),30px 0 0 0 rgba(1254,254,254,.4),40px 0 0 0 rgba(254,254,254,1);
+            }
+            }
+    	/*抢购结束*/
+	 footer .noBgcolor{background: rgb(204, 204, 204);color: #4571b6;font-weight: bold;}
+</style>
+</head>
+<body>
+<header class="clearfix">
+	<img src="view/ccb7x/images/ccb.jpg" alt=""  class="fl"/>
+	<div class="headTop fr clearfix">
+		<span class="headTit fl">
+			花永生，爱永恒
+		</span>
+		<img src="view/ccb7x/images/my-zoe.png" class="fr" alt="" onclick="goMyOrders()"/>
+	</div>
+</header>
+<section>
+	<h1>{$goods.brand_name} {$goods.goods_name_wx}</h1>
+	<dl class="clearfix">
+		<dd class="fl">数&nbsp;&nbsp;&nbsp;&nbsp;量：</dd>
+		<dt class="fl">
+			<input type="" name="" id="" value="1" disabled="disabled" />
+		</dt>
+	</dl>
+	<dl class="clearfix">
+		<dd class="fl">市场价：</dd>
+		<dt class="fl">
+		￥{$goods.market_price}
+		</dt>
+	</dl>
+	<dl class="clearfix">
+		<dd class="fl">单&nbsp;&nbsp;&nbsp;&nbsp;价：</dd>
+		<dt class="fl price">
+			￥{$goods.shop_price}
+		</dt>
+	</dl>
+	<dl class="clearfix">
+		<dd class="fl">总&nbsp;&nbsp;&nbsp;&nbsp;价：</dd>
+		<dt class="fl price">
+			￥{$goods.shop_price}
+		</dt>
+	</dl>
+	<dl class="clearfix">
+		<dd class="fl">收货人：</dd>
+		<dt class="fl name">
+			<input type="text" id="username" placeholder="请输入收货人" />
+		</dt>
+	</dl>
+	<dl class="clearfix">
+		<dd class="fl">手机号：</dd>
+		<dt class="fl name">
+			<input type="text" placeholder="请输入手机号" id="mobile"/>
+		</dt>
+	</dl>
+	<dl class="clearfix">
+		<dd class="fl">银行卡号：</dd>
+		<dt class="fl name">
+			<input type="text" placeholder="请输入建设银行62开头龙卡信用卡卡号" id="card"/>
+		</dt>
+	</dl>
+	<dl class="clearfix">
+		<dd class="fl">收货地址：</dd>
+		<dt class="fl clearfix" style="margin-left:1rem">
+			<span class="fl">上海市</span>
+			<div class="fl por areaT">
+				<div class="areaM  por">
+					<input class="area " type="text" value="" disabled="disabled" id="area" placeholder="选择区域"></input>
+					<img src="view/ccb7x/images/arrow.png" alt="" class="poa"/>
+				</div>				
+				<ul class="poa">
+					<li>黄浦区</li>
+					<li>徐汇区</li>
+					<li>长宁区</li>
+					<li>静安区</li>
+					<li>普陀区</li>
+					<li>闸北区</li>
+					<li>虹口区</li>
+					<li>杨浦区</li>
+					<li>闵行区</li>
+					<li>宝山区</li>
+					<li>嘉定区</li>
+					<li>浦东区</li>
+					<li>金山区</li>
+					<li>松江区</li>
+					<li>青浦区</li>
+					<li>奉贤区</li>
+					<li>崇明区</li>
+				</ul>
+			</div>
+
+		</dt>
+	</dl>
+	<dl class="clearfix">
+		<dd class="fl">详细地址：</dd>
+		<dt class="fl name">
+			<input type="text" id="address" placeholder="请输入详细地址"/>
+		</dt>
+	</dl>
+    <p style="margin-top:.05rem">*抢购商品一经售出，无质量问题，不可退换。</p>
+
+</section>
+<footer>
+    <button class="btn go" onclick="addorder()">立即抢购</button>
+    <div class="clearfix load" >
+        <div class="cone_text fl">加载中</div>
+        <div class="wobble fl" id="focus">
+          <span class="cone"></span>
+        </div>
+    </div>
+
+    </footer>
+<script>    
+var goods_id = {$goods.goods_id};    
+$('.areaM').on('click',function(){
+	$('.areaT ul').slideToggle();
+	$('.areaM img').toggleClass('rotate')
+});
+$('.areaT ul li').on('click',function(){
+	var html_a = $(this).html();	
+	$('.areaM input').val(html_a);
+	$('.areaT ul').slideUp(200);
+	$('.areaM img').toggleClass('rotate')	
+});
+$('body').on('click',function(){
+	$('.areaT ul').slideUp(200);
+	
+});
+ $('.areaM').on('click',function(e){
+	e.stopPropagation();	
+}) 
+ $(".load").hide();
+var flag = true;
+function addorder(){
+    var param = {};
+    var address = $('#address').val();
+    param.attr = {
+    	username : $('#username').val(),
+    	address  : '上海市' + $('#area').val() + address
+    };
+    param.mobile = $('#mobile').val();
+    param.card = $('#card').val();
+    if( param.attr.username == ''){
+    	alert($('#username').attr('placeholder'));
+    	return false;
+    }
+    if( param.mobile == ''){
+    	alert($('#mobile').attr('placeholder'));
+    	return false;
+    }
+    if( param.mobile.length != 11){
+    	alert('手机号只能为11位');
+    	return false;
+    }
+    if( param.card == ''){
+    	alert($('#card').attr('placeholder'));
+    	return false;
+    }
+    if( address == ''){
+    	alert($('#address').attr('placeholder'));
+    	return false;
+    } 
+    if( address.length <5){
+    	alert('地址不正确,请重新输入');
+    	return false;
+    }
+    flag= false; 
+    $(".load").show();
+    $(".go").hide();   
+    $.ajax({
+    	url  : 'index.php?class=bank&method=addorder&project=ccb7x&goods_id=' + goods_id,
+    	data :param,
+    	dataType : 'json',
+    	success:function(success){
+    		if( success.status == 0){
+	    		alert(success.msg);
+	            $(".load").hide();
+	            $(".go").show(); 
+	    		return false;
+	    	}else{
+	    		window.location.href = 'index.php?class=bank&method=paymentPage&project=ccb7x&order_id=' + success.order_id;
+	    	}
+    	},
+    	error:function(reponse){
+    		alert('服务器正忙,请再次点击');
+    		$(".load").hide();
+	        $(".go").show(); 
+    	}
+    });
+}
+  
+</script>
+</body>
+
+</html>

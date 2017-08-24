@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no">
+<script src="view/ccb7x/js/common.js"></script>
+<link href="view/ccb7x/css/neat.css" rel="stylesheet">
+<link rel="stylesheet" href="view/ccb7x/css/common.css" >
+<script src="view/ccb7x/js/jquery.min.js"></script>
+<title></title>
+<style>
+
+	header>img{width:2.9rem;height:.9rem ;}
+	header .headTop{background: #7293c7;width:4.6rem;line-height: .9rem;color:#fff;text-align: center;}
+	header .headTop span.headTit{margin-left: .8rem;font-size: .32rem;}
+	header .headTop img{width:.6rem;height:.6rem;margin-right: .2rem;vertical-align: middle;margin-top:.15rem}
+	section ul li{padding: .3rem .3rem;    border-bottom: .15rem solid #f2f2f2;}
+	section ul li h2{font-weight: bold;margin-bottom: .1rem;}
+	section ul li img{width:1.93rem;height: 1.6rem;border: .02rem #ddd solid;}
+	section ul li .main{margin-top: .2rem;}
+	section ul li .main .detail{margin-left: .2rem;}
+	section ul li .main .detail dt{color:#999999}
+	section ul li .main .detail .price{color:#a61515;font-weight: bold;}
+	section ul li .main .detail button{ display: block;text-align: center;width:2rem;height: .7rem;line-height:.7rem;background: #7293c7;border-radius:.15rem;color:#fff;font-size: .3rem;margin-top: .2rem;}
+	section ul li .main p{color:#333333; margin-top: .15rem}
+	/*无效 未付款状态*/
+	section ul li .main .detail .bgchange{background: rgb(204, 204, 204);color: #4571b6;font-weight: bold;}
+	section 
+</style>
+</head>
+<body>
+<header class="clearfix">
+	<img src="view/ccb7x/images/ccb.jpg" alt=""  class="fl"/>
+	<div class="headTop fr clearfix">
+		<span class="headTit fl">
+			花永生     爱永恒
+		</span>
+		<img src="view/ccb7x/images/my-zoe.png" class='fr' alt="" />
+	</div>
+</header>
+<section>
+	<ul>
+		{foreach from=$orders item=order}
+			<li>
+				<h2>订单号：<span>{$order.order_sn}</span></h2>
+				<div class="main clearfix">
+					<img src="http://www.zoe360.com/{$order.img}" class='fl' alt="" />
+					<div class="detail fl">
+						<dl class="clearfix">
+							<dt class="fl">下单时间：</dt>
+							<dd class="fl">{$order.add_time}</dd>
+						</dl>
+						<dl  class="clearfix">
+							<dt class="fl">支付金额：</dt>
+							<dd class="fl price">￥{if $order.order_amount>0}{$order.order_amount}{else}{$order.money_paid}{/if}</dd>
+						</dl>
+						<p>
+						{if $order.pay_status == 2}
+						    已付款
+						{elseif $order.order_status == 3}
+						    已取消
+						{else}
+						</p>
+						    <button onclick="window.location.href='index.php?class=bank&method=paymentPage&project=ccb7x&order_id={$order.order_id}'">立即支付</button>
+						{/if}
+						
+					</div>				
+				</div>
+			</li>
+		{/foreach}
+		
+	
+	</ul>
+
+		
+	
+</section>
+
+<script>        
+
+</script>
+</body>
+
+</html>
