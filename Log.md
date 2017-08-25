@@ -1,5 +1,24 @@
 <link rel="stylesheet" href="./src/base/css/style.css">
 <link rel="stylesheet" href="./src/base/css/md.css">
+<style>
+    .colorful {
+        color:transparent;
+        font-weight:600;
+        background-image:linear-gradient(72deg,#a8edea,#fed6e3);
+        -webkit-background-clip:text;
+        background-clip:text;
+        display:table;
+        animation: hue 60s linear infinite;
+    }
+    @keyframes hue {
+        from {
+            filter:hue-rotate(0deg);
+        }
+        to {
+            filter:hue-rotate(360deg);
+        }
+    }
+</style>
 <h1 class="colorful">梦玉</h1>
 
 ## v - 0.1 初始化项目
