@@ -1,0 +1,30 @@
+/*
+ * @Author: mianfengchen 
+ * @Date: 2017-08-25 13:41:52 
+ * @Last Modified by: mianfengchen
+ * @Last Modified time: 2017-08-25 15:45:55
+ */
+ 
+* {
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+}
+ul , li {
+    list-style:none;
+}
+a {
+    font:inherit;
+    color:inherit;
+}
+input,button {
+    border:none;
+    outline:none;
+    font:inherit;
+    color:inherit;
+}
+
+
+.red {
+    color:red;
+}
