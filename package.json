@@ -1,0 +1,30 @@
+{
+  "name": "fangmengyu",
+  "version": "1.0.0",
+  "description": "demo",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "express": "^4.15.4",
+    "pug": "^2.0.0-rc.3"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0"
+  },
+  "scripts": {
+    "test": "test",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "'"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "fmy",
+  "license": "ISC"
+}
