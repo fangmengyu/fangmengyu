@@ -1,0 +1,33 @@
+.weatherWidget
+    each x in partials.weather.locations
+        .location
+            h3= x.name
+            a(href=x.forecastUrl)
+                img(src=x.iconUrl, alt="weather")
+                = x.weather + ',' + x.temp
+    else
+        h3 没有数据
+    small
+        | Source: 
+        a(href="http://www/wunderground.com") Weather UnderGround
+    
+    style.
+        .weatherWidget .location img {
+            width:309px;
+            height:192px;
+        }
+        .weatherWidget .location {
+            float:left;
+            margin-right:20px;
+            width:309px;
+        }
+        .weatherWidget .location h3 {
+            font-family:"微软雅黑";
+            font-size:24px;
+            font-weight:400;
+            line-height:36px;
+        }
+        .weatherWidget .location a {
+            font-size:16px;
+            color:greenyellow;
+        }
