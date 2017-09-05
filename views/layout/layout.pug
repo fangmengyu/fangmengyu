@@ -6,12 +6,16 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title 青尘
 
+        link(rel="stylesheet", href="/css/base.css")
+        if showTests
+            link(rel="stylesheet", href="/vendor/mocha.css")
+
+        script(src="/js/base.js")
+
         block link
-            link(rel="stylesheet", href="/css/base.css")
-            if showTests
-                link(rel="stylesheet", href="/vendor/mocha.css")
+
         block script
-            script(src="/js/base.js")
+
 
     block body
 
