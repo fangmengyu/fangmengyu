@@ -71,7 +71,7 @@ app.use(function(err,req,res,next){
 })
 
 app.listen(port,ip,function(){
-    console.log("服务启动")
+    console.log("服务启动:" + ip + ':' + port);
 })
 
 
