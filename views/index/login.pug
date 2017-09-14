@@ -1,0 +1,27 @@
+extends /layout/layout
+
+block script
+    script(src="/js/login.js")
+
+block body
+    body
+        h2 加入我们
+        form(action="/process?form=login" method="POST" id="login")
+            input(type="hidden" name="_csrf" value=csrf)
+            div.from-group
+                label(for="fieldName") 用户名
+                div
+                    input(type="text" name="name" id="fieldName")
+            div.from-group
+                label(for="fieldPassword") 密码
+                div
+                    input(type="text" name="password" id="fieldPassword")
+            div.from-group
+                label(for="fieldEmail") 邮箱
+                div
+                    input(type="text" name="email" id="fieldEmail")
+            div.from-group
+                div
+                    button(type="submit") 注册
+        
+        button.ceshi 测试
