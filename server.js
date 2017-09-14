@@ -6,6 +6,8 @@ const fortune = require('./libs/fortune.js');
 
 const app = express();
 
+const ip = process.env.PORT || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+const port = process.env.IP || process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 app.set( 'port',process.env.PORT || 3000 );
 app.set('view engine','pug');
@@ -68,7 +70,7 @@ app.use(function(err,req,res,next){
 
 })
 
-app.listen(app.get('port'),function(){
+app.listen(port,ip,function(){
     console.log("服务启动")
 })
 
