@@ -48,7 +48,7 @@
 	<input type="text" class="password"/>	
 	<label>生日</label>
 	<input type="text" class="birthday" />
-	<button>创建</button>
+	<button class="setup">创建</button>
 </form>
   <p>已经有账户了？<a href=""><span>登录</span></a></p>
 <!-- <div class="mui-content">
@@ -82,7 +82,7 @@ $('.username').on('blur',function(){
 });
 $('.email').on('blur',function(){
     var str =$('.email').val() ;
-    var patt = new RegExp('^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$ ');
+    var patt = new RegExp('^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$ ');
     var result = patt.test(str);
     if(!result){
          mui.alert('格式不正确；','提示');
@@ -100,13 +100,22 @@ $('.password').on('blur',function(){
 $('.birthday').on('blur',function(){
     var str =$('.birthday').val();
     console.log(str);
-    var patt = new RegExp('^\d{4}-\d{1,2}-\d{1,2}$');
+    var patt = new RegExp('^\\d{4}[-.]\\d{1,2}[-.]\\d{1,2}$');
     var result = patt.test(str);
     if(!result){
          mui.alert('格式不正确；','提示');
     }  
 });
 
+$('.setup').on('tap',function(){
+    var str1= $('.username').val() ;
+    var str2 =$('.email').val() ;
+    var str3 =$('.password').val() ;
+    var str4 =$('.birthday').val();
+    if(str1==""||str2==""||str3==""||str4==""){
+         mui.alert('不能为空；','提示');
+    }
+})
 
 </script>
 
