@@ -11,7 +11,7 @@
 
     
     <style>
-    body{background: #fff}
+    body{background: #fff;width:7.5rem;margin:0 auto;}
     input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea{border: 1px solid #fff}
     	header{text-align: center;}
     	header h2{font-size: .3rem;color: #1d1d26;line-height: 1.28rem;}
@@ -22,7 +22,7 @@
     	form{padding:.3rem  .6rem}
     	form label{width:6.3rem;font-size: .2rem;color: #999;}
 		form input[type=text]{width:6.3rem;height:.7rem;line-height: .7rem;border-bottom:.02rem solid #dadcdd;font-size: .28rem;color: #1d1d26;margin-bottom: .46rem;}
-		form button{width:6.3rem;height: 1.1rem;background: #50d2c2;color: #fff;font-size: .3rem;}
+		form p.setup{width:6.3rem;height: 1.1rem;line-height:1.1rem;background: #50d2c2;color: #fff;font-size: .3rem;}
 		p{font-size: .2rem;color:#999;text-align: center;margin-top: .3rem;}
 		p span{color: #1d1d26;}
     </style>
@@ -31,7 +31,7 @@
 
 <body>
 <header>
-	<h2>注册</h2>
+	<!-- <h2>注册</h2> -->
 	<div class='por addpic'>
 		<input type="file" class="poa"/>
 		<img src="images/userpic.png" alt="" class="userpic poa"/>
@@ -48,23 +48,10 @@
 	<input type="text" class="password"/>	
 	<label>生日</label>
 	<input type="text" class="birthday" />
-	<button class="setup">创建</button>
+	<p class="setup" onclick="setup()">创建</p>
 </form>
   <p>已经有账户了？<a href=""><span>登录</span></a></p>
-<!-- <div class="mui-content">
-    <div class="mui-content-padded" style="margin: 5px;text-align: center;">
-        <button id='alertBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">警告消息框</button>
-        <button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认消息框</button>
-        <button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">输入对话框</button>
-        <button id='toastBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">自动消失提示框</button>
-        <div id="info">
-
-        </div>
-    </div>
-</div> -->
-
     <script src="base/js/jquery.min.js"></script>
-    <!-- <script src="base/layer/layer.js"></script>-->
     <script src="base/js/mui.min.js"></script>
 <script type="text/javascript">
  //mui初始化
@@ -72,51 +59,93 @@ mui.init({
     swipeBack: true //启用右滑关闭功能
 });
 var info = document.getElementById("info");
+var flag_username = false;
+var flag_email = false;
+var flag_password = false;
+var flag_birthday = false;
 $('.username').on('blur',function(){
     var str =$('.username').val() ;
-    var patt = new RegExp('^[a-zA-Z0-9_]{3,16}$');
-    var result = patt.test(str);
-    if(!result){
-         mui.alert('格式不正确；请输入3-16位由数字、字母、“_”组成的用户名','提示');
-    }  
+    if(str == ""){
+        flag_username = false;
+         mui.alert('不能为空','提示');
+    }else{
+        var patt = new RegExp('^[a-zA-Z0-9_]{3,16}$');
+        var result = patt.test(str);
+        if(!result){
+            mui.alert('格式不正确；请输入3-16位由数字、字母、“_”组成的用户名','提示');
+        }
+        flag_username=true;
+    }
+  
 });
 $('.email').on('blur',function(){
     var str =$('.email').val() ;
-    var patt = new RegExp('^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$ ');
-    var result = patt.test(str);
-    if(!result){
-         mui.alert('格式不正确；','提示');
+        if(str == ""){
+        flag_email = false;            
+         mui.alert('不能为空','提示');
+    }else{
+        var patt = new RegExp('^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$ ');
+        var result = patt.test(str);
+            if(!result){
+                 mui.alert('格式不正确；','提示');
+            } 
+            flag_email=true;
 
-    }  
+    } 
 });
 $('.password').on('blur',function(){
     var str =$('.password').val() ;
-    var patt = new RegExp('^[a-zA-Z0-9]{6,10}$');
-    var result = patt.test(str);
-    if(!result){
-         mui.alert('格式不正确；','提示');
-    }  
+    if(str == ""){
+        flag_password = false;       
+         mui.alert('不能为空','提示');
+    }else{
+        var patt = new RegExp('^[a-zA-Z0-9]{6,10}$');
+        var result = patt.test(str);
+            if(!result){
+                 mui.alert('格式不正确；','提示');
+            } 
+            flag_password=true;
+
+    } 
 });
 $('.birthday').on('blur',function(){
     var str =$('.birthday').val();
-    console.log(str);
-    var patt = new RegExp('^\\d{4}[-.]\\d{1,2}[-.]\\d{1,2}$');
-    var result = patt.test(str);
-    if(!result){
-         mui.alert('格式不正确；','提示');
-    }  
+    if(str == ""){
+        flag_birthday = false;
+         mui.alert('不能为空','提示');
+    }else{
+        var patt = new RegExp('^\\d{4}[-.]\\d{1,2}[-.]\\d{1,2}$');
+        var result = patt.test(str);
+            if(!result){
+                 mui.alert('格式不正确；','提示');
+            }
+            flag_birthday=true;
+
+    } 
 });
 
-$('.setup').on('tap',function(){
-    var str1= $('.username').val() ;
-    var str2 =$('.email').val() ;
-    var str3 =$('.password').val() ;
-    var str4 =$('.birthday').val();
-    if(str1==""||str2==""||str3==""||str4==""){
-         mui.alert('不能为空；','提示');
+function setup(){
+    if(flag_username&&flag_email&&flag_password&&flag_birthday){
+        $.ajax({
+            type: 'POST',
+            url: url ,
+            data: {
+                username:$('.username').val(),
+                email:$('.email').val(),
+                password:$('.password').val(),
+                birthday:$('.birthday').val()
+            } ,
+            dataType:'json',
+            success: function(res){
+                if(res.status > 0){
+                    window.location.href= "";
+                }else{
+                 mui.alert(res.msg,'提示');
+                }
+            },
+        })
     }
-})
-
+}
 </script>
 
 </body>
