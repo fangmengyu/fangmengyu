@@ -2,7 +2,7 @@
   "name": "fangmengyu",
   "version": "1.0.0",
   "description": "demo",
-  "main": "app.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
