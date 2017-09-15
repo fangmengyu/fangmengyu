@@ -1,0 +1,52 @@
+var formCheck = {
+    username : {
+        name   : 'username',
+        c_name : '用户名',
+        reg    : /^[a-zA-Z0-9_]{3,16}$/,
+        msg    : '请输入3-16位由数字、字母、“_”组成的用户名'
+    },
+    email : {
+        name   : 'email',
+        c_name : '邮箱',
+        reg    : /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
+        msg    : ''
+    },
+    password : {
+        name   : 'password',
+        c_name : '密码',
+        reg    : /^[a-zA-Z0-9]{6,10}$/,
+        msg    : ''
+    },
+    birthday : {
+        name   : 'birthday',
+        c_name : '生日',
+        reg    : /^\d{4}[-.]\d{1,2}[-.]\d{1,2}$/,
+        msg    : ''
+    }
+};
+
+function check(cuv){
+    var v = cuv.value,
+        f = formCheck[cuv.name];
+    if ( v == '' ) {
+        mui.alert( f.c_name +  "不能为空","提示" );
+        return false;
+    } else {
+        if ( !f.reg.test(v) ) {
+            mui.alert(f.c_name + '格式不正确，' + f.msg , '提示');
+            return false;
+        }
+        return true;
+    }
+}
+
+function sing(){
+    if (flag_username && flag_email && falg_password && flag_birthday) {
+        //  Ajax 请求
+    }
+}
+
+
+$().on('tap',setup)
+
+document.querySelector('.setup').addEventListener('tap',setup);
