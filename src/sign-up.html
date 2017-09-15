@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no">
+    <title></title>
+    <link href="base/css/neat.css" rel="stylesheet">
+    <link href="base/css/common.css" rel="stylesheet">
+    <link href="base/css/mui.min.css" rel="stylesheet">
+     <script src="base/js/common.js"></script>
+
+    
+    <style>
+    body{background: #fff}
+    input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea{border: 1px solid #fff}
+    	header{text-align: center;}
+    	header h2{font-size: .3rem;color: #1d1d26;line-height: 1.28rem;}
+    	header .addpic{height:2.5rem ;}
+    	header .addpic input{width:2rem;height: 2rem;top: .3rem;left:2.75rem;opacity: 0;z-index: 55;}
+    	header .addpic span{width:.6rem;height: .6rem;line-height:.6rem;background: #50d2c2;border-radius: 50%;display: block;top:.3rem;right:2.9rem;text-align: center;font-size: .5rem;color:#fff;font-weight:lighter;}
+    	header img.userpic{width:2rem;height: 2rem;top: .3rem;left:2.75rem;z-index: 0;}
+    	form{padding:.3rem  .6rem}
+    	form label{width:6.3rem;font-size: .2rem;color: #999;}
+		form input[type=text]{width:6.3rem;height:.7rem;line-height: .7rem;border-bottom:.02rem solid #dadcdd;font-size: .28rem;color: #1d1d26;margin-bottom: .46rem;}
+		form button{width:6.3rem;height: 1.1rem;background: #50d2c2;color: #fff;font-size: .3rem;}
+		p{font-size: .2rem;color:#999;text-align: center;margin-top: .3rem;}
+		p span{color: #1d1d26;}
+    </style>
+
+</head>
+
+<body>
+<header>
+	<h2>注册</h2>
+	<div class='por addpic'>
+		<input type="file" class="poa"/>
+		<img src="images/userpic.png" alt="" class="userpic poa"/>
+		<span class="poa">+</span>
+	</div>
+
+</header>
+<form action="">
+	<label>用户名</label>
+	<input type="text" class="username" />
+	<label>邮箱</label>
+	<input type="text" class="email"/>
+	<label>密码</label>
+	<input type="text" class="password"/>	
+	<label>生日</label>
+	<input type="text" class="birthday" />
+	<button>创建</button>
+</form>
+  <p>已经有账户了？<a href=""><span>登录</span></a></p>
+<!-- <div class="mui-content">
+    <div class="mui-content-padded" style="margin: 5px;text-align: center;">
+        <button id='alertBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">警告消息框</button>
+        <button id='confirmBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认消息框</button>
+        <button id='promptBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">输入对话框</button>
+        <button id='toastBtn' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">自动消失提示框</button>
+        <div id="info">
+
+        </div>
+    </div>
+</div> -->
+
+    <script src="base/js/jquery.min.js"></script>
+    <!-- <script src="base/layer/layer.js"></script>-->
+    <script src="base/js/mui.min.js"></script>
+<script type="text/javascript">
+ //mui初始化
+mui.init({
+    swipeBack: true //启用右滑关闭功能
+});
+var info = document.getElementById("info");
+$('.username').on('blur',function(){
+    var str =$('.username').val() ;
+    var patt = new RegExp('^[a-zA-Z0-9_]{3,16}$');
+    var result = patt.test(str);
+    if(!result){
+         mui.alert('格式不正确；请输入3-16位由数字、字母、“_”组成的用户名','提示');
+    }  
+});
+$('.email').on('blur',function(){
+    var str =$('.email').val() ;
+    var patt = new RegExp('^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$ ');
+    var result = patt.test(str);
+    if(!result){
+         mui.alert('格式不正确；','提示');
+
+    }  
+});
+$('.password').on('blur',function(){
+    var str =$('.password').val() ;
+    var patt = new RegExp('^[a-zA-Z0-9]{6,10}$');
+    var result = patt.test(str);
+    if(!result){
+         mui.alert('格式不正确；','提示');
+    }  
+});
+$('.birthday').on('blur',function(){
+    var str =$('.birthday').val();
+    console.log(str);
+    var patt = new RegExp('^\d{4}-\d{1,2}-\d{1,2}$');
+    var result = patt.test(str);
+    if(!result){
+         mui.alert('格式不正确；','提示');
+    }  
+});
+
+
+</script>
+
+</body>
+
+</html>
