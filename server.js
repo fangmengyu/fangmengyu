@@ -6,9 +6,9 @@ const fortune = require('./libs/fortune.js');
 
 const app = express();
 
-const ip   = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+const ip   = process.env.OPENSHIFT_NODEJS_IP || '172.30.218.203';
 console.log(ip);
-const port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+const port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 console.log(port);
 
 app.set('view engine','pug');
