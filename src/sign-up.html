@@ -48,7 +48,7 @@
 	<input type="text" class="password"/>	
 	<label>生日</label>
 	<input type="text" class="birthday" />
-	<p class="setup" onclick="setup()">创建</p>
+	<p class="setup" id="setup">创建</p>
 </form>
   <p>已经有账户了？<a href=""><span>登录</span></a></p>
     <script src="base/js/jquery.min.js"></script>
@@ -124,8 +124,8 @@ $('.birthday').on('blur',function(){
     } 
 });
 
-function setup(){
-    if(flag_username&&flag_email&&flag_password&&flag_birthday){
+document.getElementById("setup").addEventListener('tap',function(){
+        if(flag_username&&flag_email&&flag_password&&flag_birthday){
         $.ajax({
             type: 'POST',
             url: url ,
@@ -145,7 +145,8 @@ function setup(){
             },
         })
     }
-}
+})
+
 </script>
 
 </body>

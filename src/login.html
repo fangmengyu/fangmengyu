@@ -37,7 +37,7 @@
 	<label>密码</label>
 	<input type="text" class="password"/>
 
-	<p class="setup">登录</p>
+	<p class="setup" id="setup">登录</p>
 </form>
   <p>已经有账户了？<a href=""><span>登录</span></a></p>
     <script src="base/js/jquery.min.js"></script>
@@ -83,7 +83,28 @@ $('.password').on('blur',function(){
     } 
 });
 
-
+document.getElementById("setup").addEventListener('tap',function(){
+        if(flag_username&&flag_email&&flag_password&&flag_birthday){
+        $.ajax({
+            type: 'POST',
+            url: url ,
+            data: {
+                username:$('.username').val(),
+                email:$('.email').val(),
+                password:$('.password').val(),
+                birthday:$('.birthday').val()
+            } ,
+            dataType:'json',
+            success: function(res){
+                if(res.status > 0){
+                    window.location.href= "";
+                }else{
+                 mui.alert(res.msg,'提示');
+                }
+            },
+        })
+    }
+})
 
 </script>
 
