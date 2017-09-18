@@ -48,20 +48,20 @@ mui.init({
     swipeBack: true //启用右滑关闭功能
 });
 var info = document.getElementById("info");
-var flag = false;
+var flag_username = false;
+var flag_password = false;
 $('.username').on('blur',function(){
     var str =$('.username').val() ;
     if(str == ""){
-        flag = false;
+        flag_username = false;
          mui.alert('用户名不能为空','提示');
     }else{
         var patt = new RegExp('^[a-zA-Z0-9_]{3,16}$');
         var result = patt.test(str);
         if(!result){
-            flag = false;
              mui.alert('格式不正确；请输入3-16位由数字、字母、“_”组成的用户名','提示');
         }
-    flag = true;
+    flag_username = true;
 
     }
   
@@ -70,7 +70,7 @@ $('.username').on('blur',function(){
 $('.password').on('blur',function(){
     var str =$('.password').val() ;
     if(str == ""){
-        flag = false;
+        flag_password = false;
 
          mui.alert('不能为空','提示');
     }else{
@@ -79,7 +79,7 @@ $('.password').on('blur',function(){
         if(!result){
              mui.alert('格式不正确；','提示');
         } 
-        flag = true;
+        flag_password = true;
     } 
 });
 
