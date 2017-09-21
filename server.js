@@ -69,8 +69,7 @@ app.get('/thank-you',function(req,res){
 })
 
 
-app.get('/data/chatlist/init', (req ,res) => {
-    console.log(1);
+app.post('/data/chatlist/init', (req ,res) => {
     res.json( chat.getchatList())
 })
 app.post('/data/chatlist/add', (req ,res) => {

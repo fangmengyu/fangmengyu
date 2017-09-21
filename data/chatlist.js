@@ -35,7 +35,7 @@ exports.getchatList = function(){
 exports.addchatmsg = function(msg){
     console.log(msg)
     msg.msgid = ++count;
-    chatlist.push(msg.msgid);
+    chatlist.push(msg);
     return msg;
 }
 exports.deletechatmsg = function(msgid) {
