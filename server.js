@@ -3,17 +3,27 @@ const express = require('express');
 const pug     = require('pug');
 const path    = require('path');
 const fortune = require('./libs/fortune.js');
+const chat    = require('./data/chatlist.js');
 
 const app = express();
 
 const ip = process.env.PORT || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-const port = process.env.IP || process.env.OPENSHIFT_NODEJS_PORT || 3000;
+const port = process.env.IP || process.env.OPENSHIFT_NODEJS_PORT || 8008;
 
-app.set( 'port',process.env.PORT || 3000 );
+app.set( 'port',process.env.PORT || 8008 );
 app.set('view engine','pug');
 app.locals.basedir = path.join(__dirname,"views");
 
 app.use(express.static(__dirname + '/public'));
+
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1');
+    if(req.method=="OPTIONS") res.send(200);
+    else next();
+})
 
 app.use(function(req,res,next){
     res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
@@ -58,6 +68,19 @@ app.get('/thank-you',function(req,res){
     res.render('thank-you');
 })
 
+
+app.get('/data/chatlist/init', (req ,res) => {
+    console.log(1);
+    res.json( chat.getchatList())
+})
+app.post('/data/chatlist/add', (req ,res) => {
+    console.log(req.body);
+    res.json( chat.addchatmsg(req.body))
+})
+app.post('/data/chatlist/delete', (req ,res) => {
+    res.json( chat.deletechatmsg(req.body))
+})
+
 app.use(function(req,res){
     res.status(404);
     res.render('404');
@@ -73,6 +96,8 @@ app.use(function(err,req,res,next){
 app.listen(port,ip,function(){
     console.log("服务启动:" + ip + ':' + port);
 })
+
+
 
 
 function getWeatherData(){
