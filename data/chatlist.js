@@ -39,7 +39,8 @@ exports.addchatmsg = function(msg){
     return msg;
 }
 exports.deletechatmsg = function(msgid) {
-    return chatlist.filter( el =>{
-        return el.msgid != msgid;
+    chatlist = chatlist.filter( el =>{
+        return el.msgid != msgid.msgid;
     } )
+    return chatlist;
 }

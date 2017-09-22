@@ -1,9 +1,10 @@
 
-const express = require('express');
-const pug     = require('pug');
-const path    = require('path');
-const fortune = require('./libs/fortune.js');
-const chat    = require('./data/chatlist.js');
+const express  = require('express');
+const pug      = require('pug');
+const path     = require('path');
+const fortune  = require('./libs/fortune.js');
+const chat     = require('./data/chatlist.js');
+const login    = require('./data/login.js');
 
 const app = express();
 
@@ -79,6 +80,7 @@ app.post('/data/chatlist/add', (req ,res) => {
 app.post('/data/chatlist/delete', (req ,res) => {
     res.json( chat.deletechatmsg(req.body))
 })
+app.post('/data/login', login.login)
 
 app.use(function(req,res){
     res.status(404);
