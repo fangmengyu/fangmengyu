@@ -5,6 +5,8 @@ const path     = require('path');
 const fortune  = require('./libs/fortune.js');
 const chat     = require('./data/chatlist.js');
 const login    = require('./data/login.js');
+const sign     = require('./data/sign.js');
+const arc      = require('./data/arc.js');
 
 const app = express();
 
@@ -22,7 +24,7 @@ app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("X-Powered-By",' 3.2.1');
-    if(req.method=="OPTIONS") res.send(200);
+    if(req.method=="OPTIONS") res.status(200).send('');
     else next();
 })
 
@@ -74,13 +76,15 @@ app.post('/data/chatlist/init', (req ,res) => {
     res.json( chat.getchatList())
 })
 app.post('/data/chatlist/add', (req ,res) => {
-    console.log(req.body);
     res.json( chat.addchatmsg(req.body))
 })
 app.post('/data/chatlist/delete', (req ,res) => {
     res.json( chat.deletechatmsg(req.body))
 })
-app.post('/data/login', login.login)
+app.post('/data/login', login.login);
+app.get('/data/signout',sign.out);
+app.post('/data/arclist', arc.list);
+app.post('/data/arc', arc.arc);
 
 app.use(function(req,res){
     res.status(404);
