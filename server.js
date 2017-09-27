@@ -85,6 +85,9 @@ app.post('/data/login', login.login);
 app.get('/data/signout',sign.out);
 app.post('/data/arclist', arc.list);
 app.post('/data/arc', arc.arc);
+app.post('/data/arcchange', arc.change);
+app.post('/data/arcpublish', arc.publish);
+app.post('/data/arcdel', arc.del);
 
 app.use(function(req,res){
     res.status(404);

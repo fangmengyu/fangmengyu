@@ -4,7 +4,7 @@ var artical = [
         src   : 'http://img.kxt.com/uploads/image/69d/d8ada09d575f3ae48859f5c1db90e7.jpg',
         source : '文/快讯通财经',
         sourcesrc : 'https://www.bing.com/',
-        time   : '2017-09-07',
+        time   : '1506503395268',
         arcid  : 1,
         cont : '<img class="banner" src="http://pic36.photophoto.cn/20150830/0033034027690794_b.jpg" alt="">\
             <p>今日凌晨两点美联储发布政策声明称，从10月份开始启动渐进式被动缩表，这是解除历史性经济刺激计划的首次试探。耶伦在会后的新闻发布会上表示，美国经济足够强劲，能够承受进一步加息以及缩减资产负债表，并宣布将于10月开始缩减4.5万亿美元的资产负债表。与此同时，美联储维持基准利率1%-1.25%不变，但暗示今年可能再次加息，尽管近期的通胀数据表现低迷。</p>\
@@ -19,7 +19,7 @@ var artical = [
         src   : 'http://img.kxt.com/uploads/image/f8b/bf91661793a90a72a30bc29e106938.jpg',
         source : 'express',
         sourcesrc : 'https://www.bing.com/',
-        time   : '2017-09-26',
+        time   : '1506503395248',
         arcid  : 2,
         cont : '<img class="banner" src="http://pic36.photophoto.cn/20150830/0033034027690794_b.jpg" alt="">\
             <h2>Web 应用</h2>\
@@ -34,9 +34,22 @@ var artical = [
     }
 ]
 
+var count = 2;
+
+var defaultarc = {
+    title : '',
+    src   : 'http://img.kxt.com/uploads/image/f8b/bf91661793a90a72a30bc29e106938.jpg',
+    source : '快讯通财经',
+    sourcesrc : '',
+    time   : '',
+    arcid  : '',
+    cont : ''
+}
+
 
 exports.list = function(req,res){
-    res.json(artical);
+    var temp = artical.concat();
+    res.json(temp.reverse());
 }
 exports.arc = function(req,res){
     var result;
@@ -46,10 +59,9 @@ exports.arc = function(req,res){
                 return key.arcid == req.body.arcid;
             })[0];
         } else {
-            result = artical[0];
+            result = artical[artical.length - 1];
         }
         if (result) {
-            console.log(result)
             res.json(result);
         } else {
             res.send('没有相关文章');
@@ -57,4 +69,30 @@ exports.arc = function(req,res){
     } else {
         res.send('暂无数据');
     }
+}
+exports.change = function(req,res){
+    var result = {};
+    for (var i = 0,l = artical.length;i < l;i++ ) {
+        if ( artical[i].arcid == req.body.arcid ) {
+            artical[i] = Object.assign(artical[i],req.body);
+            result = artical[i];
+            break;
+        }
+    }
+    res.json(result);
+}
+exports.publish = function(req,res) {
+    console.log(req.body);
+    var result = Object.assign(defaultarc,req.body);
+    result.time = new Date().getTime();
+    result.arcid = ++count;
+    artical.push(result);
+    res.json(result);
+}
+exports.del = function(req,res) {
+    artical = artical.filter( el => {
+        return el.arcid != req.body.arcid; 
+    })
+    var temp = artical.concat();
+    res.json(temp.reverse());
 }
