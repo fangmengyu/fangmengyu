@@ -1,3 +1,5 @@
+var emoji = require('./emoji.js');
+
 var count = 2;
 var chatlist =  [
     {
@@ -33,7 +35,24 @@ exports.getchatList = function(){
     return chatlist;
 }
 exports.addchatmsg = function(msg){
-    console.log(msg)
+    msg.msg = msg.msg.replace(/\[[a-z]+?.+?\]/g,k => {
+        var s = k.substr(1).match(/^[a-z]+/);
+        if (s) {
+            var group = emoji.emoji.data.filter( k1 => {
+                return k1.code == s[0];
+            });
+            if ( group.length > 0 ) {
+                var item =  group[0].data.filter( k2 => {
+                    return k2.code == k.replace(/^\[|\]$/g,'');
+                })
+                if ( item.length > 0 ) {
+                    return `<img src=${item[0].image}>`;
+                }
+                else return k;
+            }
+            else return k;
+        } else return k;
+    })
     msg.msgid = ++count;
     chatlist.push(msg);
     return msg;

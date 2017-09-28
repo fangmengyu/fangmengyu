@@ -82,9 +82,11 @@ exports.change = function(req,res){
     res.json(result);
 }
 exports.publish = function(req,res) {
-    console.log(req.body);
-    var result = Object.assign(defaultarc,req.body);
-    result.time = new Date().getTime();
+    var temp = JSON.parse(JSON.stringify(defaultarc));
+    console.log(temp)
+    let result   = Object.assign(temp,req.body);
+    console.log(result)
+    result.time  = new Date().getTime();
     result.arcid = ++count;
     artical.push(result);
     res.json(result);
