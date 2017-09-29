@@ -88,6 +88,7 @@ app.post('/data/arc', arc.arc);
 app.post('/data/arcchange', arc.change);
 app.post('/data/arcpublish', arc.publish);
 app.post('/data/arcdel', arc.del);
+app.post('/data/arcloadmore', arc.loadmore);
 
 app.use(function(req,res){
     res.status(404);

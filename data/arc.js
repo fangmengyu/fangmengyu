@@ -45,7 +45,21 @@ var defaultarc = {
     arcid  : '',
     cont : ''
 }
-
+exports.loadmore = function(req,res){
+    setTimeout(function(){
+        var n = {
+            title : 'CESHI' + count,
+            src   : 'http://img.kxt.com/uploads/image/f8b/bf91661793a90a72a30bc29e106938.jpg',
+            source : '快讯通财经',
+            sourcesrc : '',
+            time   : new Date().getTime(),
+            arcid  : ++count,
+            cont : 'ceshi'
+        };
+        artical.push(n);
+        res.json(n);
+    },2000)
+}
 
 exports.list = function(req,res){
     var temp = artical.concat();
