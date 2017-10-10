@@ -97,9 +97,7 @@ exports.change = function(req,res){
 }
 exports.publish = function(req,res) {
     var temp = JSON.parse(JSON.stringify(defaultarc));
-    console.log(temp)
     let result   = Object.assign(temp,req.body);
-    console.log(result)
     result.time  = new Date().getTime();
     result.arcid = ++count;
     artical.push(result);

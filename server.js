@@ -7,6 +7,7 @@ const chat     = require('./data/chatlist.js');
 const login    = require('./data/login.js');
 const sign     = require('./data/sign.js');
 const arc      = require('./data/arc.js');
+const chatt    = require('./data/clist.js');
 
 const app = express();
 
@@ -89,6 +90,8 @@ app.post('/data/arcchange', arc.change);
 app.post('/data/arcpublish', arc.publish);
 app.post('/data/arcdel', arc.del);
 app.post('/data/arcloadmore', arc.loadmore);
+app.post('/data/chatlist', chatt.list);
+app.post('/data/chat', chatt.chat);
 
 app.use(function(req,res){
     res.status(404);
