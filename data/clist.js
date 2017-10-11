@@ -172,17 +172,23 @@ var culist = [
     {
         cid : 2,
         list : [
-            2
+            1
         ]
     },
     {
         cid : 3,
         list : [
-            3
+            2
         ]
     },
     {
         cid : 4,
+        list : [
+            3
+        ]
+    },
+    {
+        cid : 5,
         list : [
             4
         ]
@@ -194,14 +200,17 @@ exports.list = function(req,res){
     res.json(chatLists);
 }
 exports.chat = function(req,res){
-    var result = chatLists.filter( k => k.id == req.body.id )[0];
-    var ulist  = culist.filter( k => k.cid == req.body.id )[0].list;
+    var result;
+    if (!req.body.id) {
+        result = chatLists.filter( (k,i) => i == 0 )[0];
+    } else {
+        result = chatLists.filter( k => k.id == req.body.id )[0];
+    }
+    var ulist  = culist.filter( k => k.cid == result.id )[0].list;
     var resultulist = [];
-    console.log(1,ulist,login.user);
     for (var i = 0,l = ulist.length;i < l;i++){
         resultulist[i] = login.user.filter( k => k.id == ulist[i] )[0];
     }
-    console.log(result,resultulist)
     result.ulist = resultulist;
     res.json(result);
 }
