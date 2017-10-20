@@ -10,6 +10,8 @@ const arc      = require('./data/arc.js');
 const chatt    = require('./data/clist.js');
 
 const app = express();
+var server   = require('http').Server(app);
+var io       = require('socket.io')(server);
 
 const ip = process.env.PORT || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 const port = process.env.IP || process.env.OPENSHIFT_NODEJS_PORT || 8008;
@@ -21,7 +23,8 @@ app.locals.basedir = path.join(__dirname,"views");
 app.use(express.static(__dirname + '/public'));
 
 app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.set('Access-Control-Allow-Credentials', 'true')
     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("X-Powered-By",' 3.2.1');
@@ -93,6 +96,8 @@ app.post('/data/arcloadmore', arc.loadmore);
 app.post('/data/chatlist', chatt.list);
 app.post('/data/chat', chatt.chat);
 
+
+
 app.use(function(req,res){
     res.status(404);
     res.render('404');
@@ -109,7 +114,12 @@ app.listen(port,ip,function(){
     console.log("服务启动:" + ip + ':' + port);
 })
 
-
+io.on('connection',function(socket) {
+    socket.emit('news' , {hello : world});
+    socket.on("my other event",function(data) {
+        console.log(data);
+    })
+})
 
 
 function getWeatherData(){
