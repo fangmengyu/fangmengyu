@@ -23,5 +23,3 @@ var Qs = (function(){
     }
 
 })();
-
-console.log(Qs.getFromData)
