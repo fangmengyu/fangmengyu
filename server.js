@@ -95,13 +95,13 @@ app.post('/data/arcloadmore', arc.loadmore);
 app.post('/data/chatlist', chatt.list);
 app.post('/data/chat', chatt.chat);
 
-io.on('connection',function(socket) {
-    socket.emit('news' , {hello : world});
-    socket.on("my other event",function(data) {
-        console.log(data);
-    })
+// io.on('connection',function(socket) {
+//     socket.emit('news' , {hello : world});
+//     socket.on("my other event",function(data) {
+//         console.log(data);
+//     })
     
-})
+// })
 
 
 app.use(function(req,res){
