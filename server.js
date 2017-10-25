@@ -51,7 +51,6 @@ app.get('/',function(req,res){
     });
 })
 
-
 app.use(require('body-parser')());
 
 app.get('/login',function(req,res){
@@ -96,6 +95,13 @@ app.post('/data/arcloadmore', arc.loadmore);
 app.post('/data/chatlist', chatt.list);
 app.post('/data/chat', chatt.chat);
 
+io.on('connection',function(socket) {
+    socket.emit('news' , {hello : world});
+    socket.on("my other event",function(data) {
+        console.log(data);
+    })
+    
+})
 
 
 app.use(function(req,res){
@@ -114,12 +120,6 @@ app.listen(port,ip,function(){
     console.log("服务启动:" + ip + ':' + port);
 })
 
-io.on('connection',function(socket) {
-    socket.emit('news' , {hello : world});
-    socket.on("my other event",function(data) {
-        console.log(data);
-    })
-})
 
 
 function getWeatherData(){
