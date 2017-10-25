@@ -23,7 +23,7 @@ app.locals.basedir = path.join(__dirname,"views");
 app.use(express.static(__dirname + '/public'));
 
 app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "*");
     res.set('Access-Control-Allow-Credentials', 'true')
     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
